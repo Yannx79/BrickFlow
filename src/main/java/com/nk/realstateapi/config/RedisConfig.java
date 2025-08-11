@@ -44,6 +44,13 @@ public class RedisConfig {
     public RedisSerializer<Object> jacksonSerializer() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
+
+        mapper.activateDefaultTyping(
+                com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator.instance,
+                ObjectMapper.DefaultTyping.NON_FINAL,
+                com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY
+        );
+
         return new GenericJackson2JsonRedisSerializer(mapper);
     }
 

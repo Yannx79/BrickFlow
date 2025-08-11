@@ -1,7 +1,6 @@
 package com.nk.realstateapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -8,29 +8,28 @@ import org.springframework.context.annotation.Configuration;
 public class ModelMapperConfig {
 
     @Bean("companyModelMapper")
-    public ModelMapper companyModelMapper(){
+    public ModelMapper companyModelMapper() {
         return new ModelMapper();
     }
 
     @Bean("housingModelMapper")
-    public ModelMapper housingModelMapper(){
+    public ModelMapper housingModelMapper() {
         return new ModelMapper();
     }
 
     @Bean("populationModelMapper")
-    public ModelMapper populationModelMapper(){
+    public ModelMapper populationModelMapper() {
         return new ModelMapper();
     }
 
     @Bean("promotionModelMapper")
-    public ModelMapper promotionModelMapper(){
+    public ModelMapper promotionModelMapper() {
         return new ModelMapper();
     }
 
     @Bean("realStateModelMapper")
-    public ModelMapper realStateModelMapper(){
+    public ModelMapper realStateModelMapper() {
         return new ModelMapper();
     }
-
 
 }

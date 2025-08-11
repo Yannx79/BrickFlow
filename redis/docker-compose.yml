@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis
+    restart: always
+    command: >
+      redis-server
+      --appendonly yes
+      --appendfsync everysec
+      --requirepass ${REDIS_PASSWORD}
+      --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
+    environment:
+      - TZ=America/Lima
+    volumes:
+      - redis_data:/data
+    networks:
+      - redis_net
+    healthcheck:
+      test: [ "CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "PING" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  redis_data:
+    name: redis_data_volume
+
+networks:
+  redis_net:
+    driver: bridge

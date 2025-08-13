@@ -29,3 +29,20 @@ spring:
       timeout: 2000ms
   cache:
     type: redis
+
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    default-encoding: UTF-8
+
+app:
+  mail:
+    from: ${MAIL_FROM}

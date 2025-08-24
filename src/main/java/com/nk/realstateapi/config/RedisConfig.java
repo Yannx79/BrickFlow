@@ -7,7 +7,6 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisPassword;
@@ -71,13 +70,13 @@ public class RedisConfig {
     @Bean
     public CacheManager cacheManager(LettuceConnectionFactory connectionFactory,
                                      RedisSerializer<Object> serializer) {
-        // Configuración base
+        // Base Config
         RedisCacheConfiguration defaultConfig = RedisCacheConfiguration.defaultCacheConfig()
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(serializer))
                 .entryTtl(Duration.ofMinutes(10))
                 .disableCachingNullValues();
 
-        // TTL personalizados
+        // Custom TTL
         Map<String, RedisCacheConfiguration> cacheConfigurations = new HashMap<>();
         cacheConfigurations.put("CompanyServiceImplCache", defaultConfig.entryTtl(Duration.ofMinutes(5)));
         cacheConfigurations.put("HousingServiceImplCache", defaultConfig.entryTtl(Duration.ofHours(6)));

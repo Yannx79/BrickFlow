@@ -28,7 +28,7 @@ public class CompanyController {
     @Qualifier("companyModelMapper")
     private final ModelMapper mapper;
 
-    private final EmailServiceImpl emailService;
+    // private final EmailServiceImpl emailService;
 
     @GetMapping
     public ResponseEntity<List<CompanyDTO>> readAll() throws Exception {
